@@ -7,6 +7,7 @@ public class OrbitsWithBezierCurve : MonoBehaviour
     [SerializeField] Transform[] _bezierCurve;
     [SerializeField] float _speedCoef;
     int _runningCurveNo = 0;
+    public int tour = 0;
 
     void Start()
     {
@@ -30,7 +31,11 @@ public class OrbitsWithBezierCurve : MonoBehaviour
         _runningCurveNo++;
 
         if (_runningCurveNo >= _bezierCurve.Length)
+        {
             _runningCurveNo = 0;
+            tour++;
+            Debug.Log(gameObject.name + " has completed it's tour. Total completed tours count: " + tour);
+        }
 
         StartCoroutine(OrbitsBezierCurveCoroutine());
         yield break;
