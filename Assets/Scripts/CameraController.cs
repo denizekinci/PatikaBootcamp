@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 
-
 public class CameraController : MonoBehaviour
 {
     public static CameraController instance;
@@ -9,9 +8,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Transform _target;
     [SerializeField][Range(1, 10)] private float _mouseSensitivity;
 
-
     public float _speedCoef = 50f;
-    private float _scrollCoef = 2;
+    float _scrollCoef = 2;
     float cooldown = 3;
 
 
@@ -44,7 +42,6 @@ public class CameraController : MonoBehaviour
             AutoCamera();
         }
     }
-
 
     private void RotateWithHand()
     {
