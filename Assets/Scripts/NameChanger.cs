@@ -12,7 +12,7 @@ public class NameChanger : MonoBehaviour
 
     public void SetCurrentPlanetInfo (string currentInput, string tour)
     {
-        _planetName.text = "Planet's name: " + currentInput;
+        _planetName.text = currentInput;
         _tourCount.text = "Tour Count: " + tour;
     }
 }

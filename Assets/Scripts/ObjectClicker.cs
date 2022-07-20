@@ -9,10 +9,9 @@ public class ObjectClicker : MonoBehaviour
     TogglePanel _togglePanel;
 
     GameObject selectedGameObject;
-
-    OrbitsWithBezierCurve _orbits;
-
+    
     string tourCount;
+
 
     private void Start()
     {
