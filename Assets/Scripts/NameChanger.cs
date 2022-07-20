@@ -7,16 +7,12 @@ public class NameChanger : MonoBehaviour
 {
 
     public TextMeshProUGUI _planetName;
-    //public TextMeshProUGUI _tourCount;
+    public TextMeshProUGUI _tourCount;
 
-    public void SetCurrentPlanetName (string currentInput)
+
+    public void SetCurrentPlanetInfo (string currentInput, string tour)
     {
-        _planetName = FindObjectOfType<TextMeshProUGUI>();
-        _planetName.SetText($"Planet's name: {currentInput}");
+        _planetName.text = currentInput;
+        _tourCount.text = "Tour Count: " + tour;
     }
-    //public void SetCurrentTourCount (string tour)
-    //{
-    //    _tourCount = FindObjectOfType<TextMeshProUGUI>();
-    //    _tourCount.SetText($"Tour count: {tour}");
-    //}
 }
