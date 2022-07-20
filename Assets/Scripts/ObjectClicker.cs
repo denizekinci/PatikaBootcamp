@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class ObjectClicker : MonoBehaviour
 {
-    NameChanger _planetName;
+    NameChanger _nameChanger;
 
     TogglePanel _togglePanel;
 
     GameObject selectedGameObject;
 
+    OrbitsWithBezierCurve _orbits;
+
+    string tourCount;
+
     private void Start()
     {
-        _planetName = GameObject.FindObjectOfType(typeof(NameChanger)) as NameChanger;
         _togglePanel = GameObject.FindObjectOfType(typeof(TogglePanel)) as TogglePanel;
     }
 
@@ -23,13 +26,20 @@ public class ObjectClicker : MonoBehaviour
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit, 100.0f))
+            if (Physics.Raycast(ray, out hit, 400.0f))
             {
                 if (hit.transform != null)
                 {
                     selectedGameObject = hit.transform.gameObject;
-                    _togglePanel.OpenPanel();
-                    _planetName.SetCurrentPlanetName(selectedGameObject.name.ToString());
+
+                    if(selectedGameObject.name != "Sun")
+                    {
+                        _togglePanel.OpenPanel();
+                        _nameChanger = GameObject.FindObjectOfType(typeof(NameChanger)) as NameChanger;
+                        
+                        tourCount = selectedGameObject.GetComponent<OrbitsWithBezierCurve>().tour.ToString();
+                        _nameChanger.SetCurrentPlanetInfo(selectedGameObject.name.ToString(), tourCount);
+                    }
                 }
             }
         }
