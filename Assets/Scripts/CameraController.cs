@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CameraController : MonoBehaviour
 {
@@ -8,10 +9,9 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Transform _target;
     [SerializeField][Range(1, 10)] private float _mouseSensitivity;
 
-    public float _speedCoef = 50f;
+    float _speedCoef = 50f;
     float _scrollCoef = 2;
     float cooldown = 3;
-
 
     private void Start()
     {
@@ -29,8 +29,11 @@ public class CameraController : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            RotateWithHand();
-            cooldown = 3;
+            if (!EventSystem.current.currentSelectedGameObject)
+            {
+                RotateWithHand();
+                cooldown = 3;
+            }
         }
 
         if (cooldown > 0)

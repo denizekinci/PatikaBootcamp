@@ -7642,6 +7642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec3c8dc8f9ad944c839f109f4e0c848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnButton: {fileID: 413910815}
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15344,7 +15345,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _meteorPrefab: {fileID: 8290806946592022410, guid: c698c77b7c81f844a9648a251a09ccc8, type: 3}
-  spawnAngle: 30
 --- !u!1 &2063803521
 GameObject:
   m_ObjectHideFlags: 0

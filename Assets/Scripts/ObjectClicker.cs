@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectClicker : MonoBehaviour
@@ -11,7 +9,6 @@ public class ObjectClicker : MonoBehaviour
     GameObject selectedGameObject;
     
     string tourCount;
-
 
     private void Start()
     {
