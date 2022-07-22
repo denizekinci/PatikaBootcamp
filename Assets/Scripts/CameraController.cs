@@ -21,12 +21,12 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        //If user uses mouse wheel
+        //If user uses mouse wheel, executes Zoom function.
         if (Input.GetAxis("Mouse ScrollWheel") != 0)
         {
             Zoom();
         }
-
+        //If user clicks with LMB and the clicked object isn't any UI element, executes RotateWithHand function.
         if (Input.GetMouseButton(0))
         {
             if (!EventSystem.current.currentSelectedGameObject)
@@ -48,38 +48,38 @@ public class CameraController : MonoBehaviour
 
     private void RotateWithHand()
     {
-        //Get mouses input value on X Axis.
+        //Get mouse's value on X Axis.
         float mouseX = Input.GetAxis("Mouse X");
 
-        //Rotate camera around the Sun on X axis with input direction.
+        //Rotate camera around the Sun on X axis when user drags with mouse.
         transform.RotateAround(_target.position, Vector3.up, mouseX * _mouseSensitivity);
 
-        //Always looks through Sun.
+        //Changes the camera's rotation through the Sun.
         transform.LookAt(_target.position);
     }
 
     private void AutoCamera()
     {
-        //Rotates camera around the Sun with given speed multiplier
+        //Orbits camera around the Sun.
         transform.RotateAround(_target.position, Vector3.up, _speedCoef * Time.deltaTime);
 
-        //Always looks through Sun.
+        //Changes the camera's rotation through the Sun.
         transform.LookAt(_target.transform);
     }
     private void Zoom()
     {
-        //Set Mouse Wheel value to variable.
+        //Set Mouse Wheel direction value to scrollInput
         float scrollInput = Input.GetAxis("Mouse ScrollWheel");
 
-        //Check if current FOV greater than 28 and lesser than 122
+        //Limit the zoom in-out and check if current value between 28 and 122
         if (GetComponent<Camera>().fieldOfView > 28 && GetComponent<Camera>().fieldOfView < 122)
         {
-            //Zoom out if current FOV lesser than 120
+            //Check current FOV and mouse wheel scroll direction and zoom out
             if (scrollInput < 0 && GetComponent<Camera>().fieldOfView < 120)
             {
                 GetComponent<Camera>().fieldOfView = GetComponent<Camera>().fieldOfView + _scrollCoef;
             }
-            //Zoom in if current FOV greater than 30
+            //Check current FOV and mouse wheel scroll direction and zoom in
             if (scrollInput > 0 && GetComponent<Camera>().fieldOfView > 30)
             {
                 GetComponent<Camera>().fieldOfView = GetComponent<Camera>().fieldOfView - _scrollCoef;

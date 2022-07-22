@@ -30,11 +30,14 @@ public class ObjectClicker : MonoBehaviour
 
                     if(selectedGameObject.name != "Sun")
                     {
-                        _togglePanel.OpenPanel();
-                        _nameChanger = GameObject.FindObjectOfType(typeof(NameChanger)) as NameChanger;
-                        
-                        tourCount = selectedGameObject.GetComponent<OrbitsWithBezierCurve>().tour.ToString();
-                        _nameChanger.SetCurrentPlanetInfo(selectedGameObject.name.ToString(), tourCount);
+                        if(selectedGameObject.name != "Meteor")
+                        {
+                            _togglePanel.OpenPanel();
+                            _nameChanger = GameObject.FindObjectOfType(typeof(NameChanger)) as NameChanger;
+
+                            tourCount = selectedGameObject.GetComponent<OrbitsWithBezierCurve>().tour.ToString();
+                            _nameChanger.SetCurrentPlanetInfo(selectedGameObject.name.ToString(), tourCount);
+                        }
                     }
                 }
             }
